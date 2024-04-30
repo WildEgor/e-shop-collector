@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { ConfiguratorService, InjectConfigurator } from '@wildegor/e-shop-nodepack/modules/libs/configurator';
 
 @Injectable()
 export class AppConfig {
@@ -7,14 +7,13 @@ export class AppConfig {
   public readonly name: string;
   public readonly port: number;
   public readonly isProduction: boolean;
-  public readonly gRPCPort: number;
-  public readonly sha: string;
 
-  constructor(configService: ConfigService) {
-    this.name = configService.get('APP_NAME');
-    this.port = configService.get('APP_PORT');
-    this.isProduction = configService.get('APP_MODE') !== 'develop';
-    this.gRPCPort = configService.get('GRPC_PORT');
+  constructor(
+    @InjectConfigurator() protected readonly configurator: ConfiguratorService,
+  ) {
+    this.name = configurator.getString('APP_NAME');
+    this.port = configurator.getNumber('APP_PORT');
+    this.isProduction = configurator.getString('APP_MODE') !== 'develop';
   }
 
 }

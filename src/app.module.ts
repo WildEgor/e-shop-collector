@@ -1,9 +1,19 @@
 import { Module } from '@nestjs/common';
-import { CqrsModule } from '@nestjs/cqrs';
-import { ConfigModule } from '@config/config.module';
-import { DatabaseModule } from '@src/infrastructure/database/database.module';
+import { ClickhouseModule } from '@adapters/clickhouse';
+import { ClickhouseConfig } from '@config/clickhouse.config';
+import { ConfigsModule } from '@config/configs.module';
+import { CollectorModule } from '@modules/collector/collector.module';
+import { MigratorModule } from '@modules/migrator/migrator.module';
 
 @Module({
-  imports: [ConfigModule, DatabaseModule, CqrsModule],
+  imports: [
+    ConfigsModule,
+    ClickhouseModule.forRootAsync({
+      imports: [ConfigsModule],
+      useExisting: ClickhouseConfig,
+    }),
+    CollectorModule,
+    MigratorModule,
+  ],
 })
 export class AppModule {}
