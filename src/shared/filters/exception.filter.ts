@@ -11,10 +11,19 @@ export class ExceptionFilter implements RpcExceptionFilter {
     this._logger = new Logger(ExceptionFilter.name);
   }
 
-  catch(exception: RpcException): Observable<any> {
-    this._logger.warn(exception.getError());
+  catch(exception: unknown): Observable<never> {
 
-    return throwError(() => exception.getError());
+    if (exception instanceof Error) {
+      this._logger.error(exception.message);
+      this._logger.error(exception.stack);
+    }
+
+    if (exception instanceof RpcException) {
+      this._logger.error(exception.getError());
+      return throwError(() => exception.getError());
+    }
+
+    return throwError(() => new Error('rpc error'));
   }
 
 }

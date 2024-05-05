@@ -17,3 +17,16 @@ export interface ITaxiTripOrm {
   pickup_ntaname: string;
   dropoff_ntaname: string;
 }
+
+export interface ITopicFeedbackOrm {
+  id?: string;
+  t_id: string;
+  s_tid: number;
+  s_tun?: string;
+  s_uid?: string;
+  u_tid: number;
+  u_tun?: string;
+  rating: number;
+  event_date?: string;
+  event_datetime?: string;
+}

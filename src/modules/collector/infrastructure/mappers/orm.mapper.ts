@@ -1,10 +1,26 @@
 import { DateTime } from 'luxon';
-import { ITaxiTripOrm } from '../interfaces/orm.interfaces';
-import { ITaxiTripPayload } from '../interfaces/payload.interfaces';
+import { v4 as uuidv4 } from 'uuid';
+import { ITaxiTripOrm, ITopicFeedbackOrm } from '../interfaces/orm.interfaces';
+import { ITaxiTripPayload, ITopicFeedbackPayload } from '../interfaces/payload.interfaces';
 
 export class OrmMapper {
 
-  public static fromPayloadToOrm(data: ITaxiTripPayload): ITaxiTripOrm {
+  public static fromTopicPayloadToOrm(data: ITopicFeedbackPayload): ITopicFeedbackOrm  {
+    const model: ITopicFeedbackOrm = {
+      id: data.id ?? uuidv4(),
+      t_id: data.t_id,
+      s_tid: data.s_tid,
+      s_tun: data.s_tun,
+      s_uid: data.s_uid,
+      u_tid: data.u_tid,
+      u_tun: data.u_tun,
+      rating: data.rating,
+    }
+
+    return model
+  }
+
+  public static fromTaxiPayloadToOrm(data: ITaxiTripPayload): ITaxiTripOrm {
     const model: ITaxiTripOrm = {
       trip_id: data.trip_id,
       pickup_datetime: DateTime.fromJSDate(data.pickup_datetime).toFormat(

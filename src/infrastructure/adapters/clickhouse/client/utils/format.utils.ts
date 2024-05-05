@@ -1,4 +1,4 @@
-import ss from 'sqlstring';
+import * as ss from 'sqlstring';
 import {
   IClickhouseOptimizedJSONInsertFormat,
   TJSONFormatRow,

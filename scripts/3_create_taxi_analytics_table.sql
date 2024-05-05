@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS gs_db.trips
+CREATE TABLE IF NOT EXISTS e_shop_db.taxi_trips
 (
     trip_id             UInt32,
     pickup_datetime     DateTime,

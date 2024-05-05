@@ -19,7 +19,23 @@ Send data to `collector` queue this payload. For example:
 
 ```json
 {
-  "pattern": "taxi_analytics",
+  "pattern": "topic_feedbacks",
+  "data": {
+    "id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000",
+    "t_id": "123",
+    "s_tid": 1,
+    "s_tun": "test",
+    "s_uid": "2",
+    "u_tid": 3,
+    "u_tun": "test2",
+    "rating": 5
+  }
+}
+```
+
+```json
+{
+  "pattern": "taxi_trips",
   "data": {
     "trip_id": "123456789",
     "pickup_datetime": "2023-12-08T12:30:00Z",

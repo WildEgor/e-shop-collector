@@ -78,7 +78,7 @@ export class ChunkResolver {
      * On init we have to restore already existing data from watcher
      * and start pending
      */
-    this._dataWatcher.restore().then(async() => {
+    this._dataWatcher.restore().then(() => new Promise(resolve => setTimeout(resolve, 5000))).then(async() => {
       if (this._isLogging) {
         this._options.logger.log('Restore data from watcher');
       }
@@ -115,7 +115,7 @@ export class ChunkResolver {
       while (chunkedRows.length) {
         let chunk: Chunk | undefined = this._registry
           .getAll()
-          .find(state => state.ref.size < this._options.chunkSize).ref;
+          .find(state => state.ref.size < this._options.chunkSize)?.ref;
 
         if (!chunk) {
           chunk = Chunk.createScratchChunk({

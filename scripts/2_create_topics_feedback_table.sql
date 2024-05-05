@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS gs_db.topic_feedbacks
+CREATE TABLE IF NOT EXISTS e_shop_db.topic_feedbacks
 (
     id String,
     t_id Int64, --  topic id

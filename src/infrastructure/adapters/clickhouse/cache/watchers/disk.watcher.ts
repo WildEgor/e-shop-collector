@@ -1,6 +1,6 @@
 import * as fsSync from 'fs';
-import fs from 'fs/promises';
-import path from 'path';
+import * as fs from 'fs/promises';
+import * as path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import { ChunkId } from '../cache.interfaces';
 import { ChunkRegistry } from '../chunk-registry';

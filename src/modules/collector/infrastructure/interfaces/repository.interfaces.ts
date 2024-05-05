@@ -1,5 +1,6 @@
-import { ITaxiTripPayload } from './payload.interfaces';
+import { ITaxiTripPayload, ITopicFeedbackPayload } from './payload.interfaces';
 
 export interface IAnalyticsRepository {
-  save(data: ITaxiTripPayload): Promise<void>;
+  saveTaxiTrip(data: ITaxiTripPayload): Promise<void>;
+  saveTopicFeedback(data: ITopicFeedbackPayload): Promise<void>;
 }

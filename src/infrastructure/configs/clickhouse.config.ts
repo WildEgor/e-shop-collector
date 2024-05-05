@@ -33,9 +33,9 @@ export class ClickhouseConfig implements IClickhouseOptionsFactory {
     };
 
     this._cache = {
-      chunkLifeMs: 1000,
-      chunkSize: 100,
-      checkIntervalMs: 5000,
+      chunkLifeMs: configurator.getNumber('CHUNK_LIFE_MS'),
+      chunkSize: configurator.getNumber('CHUNK_SIZE'),
+      checkIntervalMs: configurator.getNumber('CHUNK_INTERVAL_MS'),
       dataWatcher: 'disk',
       disk: {
         outputDirectory: 'ch_cache',

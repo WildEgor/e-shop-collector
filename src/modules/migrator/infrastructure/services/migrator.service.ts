@@ -1,8 +1,8 @@
-import fs from 'fs/promises';
-import path from 'path';
+import * as fs from 'fs/promises';
+import * as path from 'path';
 import { Injectable, Logger, OnApplicationBootstrap } from '@nestjs/common';
-import { InjectClickhouseClient } from '../../../../infrastructure/adapters/clickhouse';
-import { ClickhouseClient } from '../../../../infrastructure/adapters/clickhouse/client';
+import { InjectClickhouseClient } from '@adapters/clickhouse';
+import { ClickhouseClient } from '@adapters/clickhouse/client';
 
 @Injectable()
 export class MigratorService implements OnApplicationBootstrap {
@@ -20,6 +20,8 @@ export class MigratorService implements OnApplicationBootstrap {
     this._logger.verbose('Run migrations...');
 
     const scriptsPath = path.join(process.cwd(), 'scripts');
+
+    this._logger.debug(scriptsPath)
 
     const scripts = await fs.readdir(scriptsPath, {
       withFileTypes: true,

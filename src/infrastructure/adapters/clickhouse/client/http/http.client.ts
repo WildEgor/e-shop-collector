@@ -61,7 +61,7 @@ export class ClickhouseHttpClient {
       method: 'POST',
       url: `http://${this._host}:${this._port}`,
       params: new URLSearchParams({
-        ...(Boolean(params.query) && { query: params!.query }),
+        ...(Boolean(params?.query) && { query: params!.query }),
         user: this._user,
         password: this._password,
         database: this._dbName,
