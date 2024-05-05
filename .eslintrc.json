@@ -453,7 +453,7 @@
     "no-nested-ternary": "warn",
     "object-curly-spacing": ["warn", "always"],
     "quote-props": ["warn", "consistent-as-needed"],
-    "sort-imports": "warn",
+    "sort-imports": "off",
     "space-in-parens": "warn",
     "space-unary-ops": "warn",
     "spaced-comment": ["warn", "always"],
