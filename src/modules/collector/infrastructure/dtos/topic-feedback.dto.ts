@@ -8,9 +8,8 @@ export class TopicFeedbackPayloadDto implements ITopicFeedbackPayload {
   @IsUUID(4)
     id!: string;
 
-  @IsNotEmpty()
-  @IsString()
-    t_id!: string;
+  @MinMaxNumber()
+    t_id!: number;
 
   @MinMaxNumber()
     s_tid!: number;

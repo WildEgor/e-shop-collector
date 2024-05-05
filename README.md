@@ -22,7 +22,7 @@ Send data to `collector` queue this payload. For example:
   "pattern": "topic_feedbacks",
   "data": {
     "id": "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000",
-    "t_id": "123",
+    "t_id": 123,
     "s_tid": 1,
     "s_tun": "test",
     "s_uid": "2",

@@ -20,7 +20,7 @@ export interface ITaxiTripOrm {
 
 export interface ITopicFeedbackOrm {
   id?: string;
-  t_id: string;
+  t_id: number;
   s_tid: number;
   s_tun?: string;
   s_uid?: string;
